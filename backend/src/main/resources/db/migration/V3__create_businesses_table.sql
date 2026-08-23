@@ -1,0 +1,22 @@
+CREATE TABLE businesses (
+        id BIGSERIAL PRIMARY KEY,
+        legal_name VARCHAR(255) NOT NULL,
+        dba_name VARCHAR(255),
+        ein VARCHAR(20) NOT NULL UNIQUE,
+        business_type VARCHAR(50) NOT NULL,
+        industry VARCHAR(150) NOT NULL,
+        naics_code VARCHAR(10),
+        established_date DATE,
+        phone VARCHAR(30),
+        email VARCHAR(255),
+        website VARCHAR(255),
+        address_line_1 VARCHAR(255) NOT NULL,
+        address_line_2 VARCHAR(255),
+        city VARCHAR(100) NOT NULL,
+        state VARCHAR(50) NOT NULL,
+        postal_code VARCHAR(20) NOT NULL,
+        annual_revenue NUMERIC(19, 2),
+        employee_count INTEGER,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

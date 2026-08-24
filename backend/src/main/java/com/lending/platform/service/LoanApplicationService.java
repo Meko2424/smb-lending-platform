@@ -26,5 +26,7 @@ public interface LoanApplicationService {
             LoanApplicationRequest request
     );
 
+    LoanApplicationResponse submitApplication(Long id);
+
     void deleteApplication(Long id);
 }

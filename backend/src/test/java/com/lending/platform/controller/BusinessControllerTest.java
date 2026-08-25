@@ -3,8 +3,10 @@ package com.lending.platform.controller;
 import com.lending.platform.dto.request.BusinessRequest;
 import com.lending.platform.entity.Business;
 import com.lending.platform.entity.BusinessType;
+import com.lending.platform.repository.BusinessOwnerRepository;
 import com.lending.platform.repository.BusinessRepository;
 import com.lending.platform.mapper.BusinessMapper;
+import com.lending.platform.repository.LoanApplicationRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +39,16 @@ class BusinessControllerTest {
     @Autowired
     private BusinessMapper businessMapper;
 
+    @Autowired
+    private BusinessOwnerRepository businessOwnerRepository;
+
+    @Autowired
+    private LoanApplicationRepository loanApplicationRepository;
+
     @BeforeEach
     void setUp() {
+        businessOwnerRepository.deleteAll();
+        loanApplicationRepository.deleteAll();
         businessRepository.deleteAll();
     }
 

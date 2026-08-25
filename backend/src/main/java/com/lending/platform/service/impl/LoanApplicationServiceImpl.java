@@ -139,35 +139,6 @@ public class LoanApplicationServiceImpl
         );
     }
 
-    @Override
-    public LoanApplicationResponse submitApplication(Long id) {
-
-        LoanApplication application =
-                findApplication(id);
-
-        if (application.getStatus()
-                != ApplicationStatus.DRAFT) {
-
-            throw new ResourceConflictException(
-                    "Only draft applications can be submitted"
-            );
-        }
-
-        application.setStatus(
-                ApplicationStatus.SUBMITTED
-        );
-
-        application.setSubmittedAt(
-                java.time.LocalDateTime.now()
-        );
-
-        LoanApplication submittedApplication =
-                loanApplicationRepository.save(application);
-
-        return loanApplicationMapper.toResponse(
-                submittedApplication
-        );
-    }
 
     @Override
     public void deleteApplication(Long id) {

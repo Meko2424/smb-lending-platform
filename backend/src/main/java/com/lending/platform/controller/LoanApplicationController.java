@@ -79,15 +79,6 @@ public class LoanApplicationController {
         );
     }
 
-    @PostMapping("/{id}/submit")
-    @PreAuthorize("hasAnyRole('ADMIN', 'LOAN_OFFICER', 'PROCESSOR')")
-    public ResponseEntity<LoanApplicationResponse> submitApplication(
-            @PathVariable Long id
-    ) {
-        return ResponseEntity.ok(
-                loanApplicationService.submitApplication(id)
-        );
-    }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'LOAN_OFFICER')")

@@ -137,51 +137,6 @@ class LoanApplicationControllerTest {
                         .value("Business not found with id: 999999"));
     }
 
-    @Test
-    @WithMockUser(roles = "ADMIN")
-    void submitApplication_shouldMoveDraftToSubmitted()
-            throws Exception {
-
-        LoanApplication application =
-                saveApplication(ApplicationStatus.DRAFT);
-
-        mockMvc.perform(
-                        post(
-                                "/api/v1/applications/{id}/submit",
-                                application.getId()
-                        )
-                )
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status")
-                        .value("SUBMITTED"))
-                .andExpect(jsonPath("$.submittedAt")
-                        .isNotEmpty());
-    }
-
-    @Test
-    @WithMockUser(roles = "ADMIN")
-    void submitApplication_shouldReturn409WhenAlreadySubmitted()
-            throws Exception {
-
-        LoanApplication application =
-                saveApplication(ApplicationStatus.SUBMITTED);
-
-        mockMvc.perform(
-                        post(
-                                "/api/v1/applications/{id}/submit",
-                                application.getId()
-                        )
-                )
-                .andExpect(status().isConflict())
-                .andExpect(jsonPath("$.status")
-                        .value(409))
-                .andExpect(jsonPath("$.error")
-                        .value("Conflict"))
-                .andExpect(jsonPath("$.message")
-                        .value(
-                                "Only draft applications can be submitted"
-                        ));
-    }
 
     @Test
     @WithMockUser(roles = "ADMIN")

@@ -247,58 +247,6 @@ class LoanApplicationServiceImplTest {
                 .save(any());
     }
 
-    @Test
-    void submitApplication_shouldMoveDraftToSubmitted() {
-
-        LoanApplication application =
-                createApplication(
-                        10L,
-                        ApplicationStatus.DRAFT
-                );
-
-        when(loanApplicationRepository.findById(10L))
-                .thenReturn(Optional.of(application));
-
-        when(loanApplicationRepository.save(application))
-                .thenReturn(application);
-
-        LoanApplicationResponse response =
-                loanApplicationService.submitApplication(
-                        10L
-                );
-
-        assertEquals(
-                ApplicationStatus.SUBMITTED,
-                response.status()
-        );
-
-        assertNotNull(response.submittedAt());
-
-        verify(loanApplicationRepository)
-                .save(application);
-    }
-
-    @Test
-    void submitApplication_shouldRejectNonDraft() {
-
-        LoanApplication application =
-                createApplication(
-                        10L,
-                        ApplicationStatus.SUBMITTED
-                );
-
-        when(loanApplicationRepository.findById(10L))
-                .thenReturn(Optional.of(application));
-
-        assertThrows(
-                ResourceConflictException.class,
-                () -> loanApplicationService
-                        .submitApplication(10L)
-        );
-
-        verify(loanApplicationRepository, never())
-                .save(any());
-    }
 
     @Test
     void deleteApplication_shouldDeleteDraft() {

@@ -73,6 +73,10 @@ public class ApplicationDocument {
         updatedAt = LocalDateTime.now();
     }
 
+    public void touch() {
+        updatedAt = LocalDateTime.now();
+    }
+
     public Long getId() {
         return id;
     }

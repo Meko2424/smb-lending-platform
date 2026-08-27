@@ -1,6 +1,7 @@
 package com.lending.platform.service.impl;
 
 import com.lending.platform.dto.request.ApplicationDocumentRequest;
+import com.lending.platform.dto.request.DocumentReceivedRequest;
 import com.lending.platform.dto.response.ApplicationDocumentResponse;
 import com.lending.platform.entity.ApplicationDocument;
 import com.lending.platform.entity.DocumentStatus;
@@ -107,7 +108,7 @@ public class ApplicationDocumentServiceImpl
     public ApplicationDocumentResponse markReceived(
             Long applicationId,
             Long documentId,
-            ApplicationDocumentRequest request
+            DocumentReceivedRequest request
     ) {
 
         ApplicationDocument document =
@@ -126,6 +127,7 @@ public class ApplicationDocumentServiceImpl
         document.setStorageKey(request.storageKey());
         document.setStatus(DocumentStatus.RECEIVED);
         document.setReceivedAt(LocalDateTime.now());
+        document.touch();
 
         ApplicationDocument updatedDocument =
                 documentRepository.save(document);
@@ -152,6 +154,7 @@ public class ApplicationDocumentServiceImpl
         }
 
         document.setStatus(DocumentStatus.UNDER_REVIEW);
+        document.touch();
 
         ApplicationDocument updatedDocument =
                 documentRepository.save(document);
@@ -184,6 +187,7 @@ public class ApplicationDocumentServiceImpl
         document.setReviewedByUser(reviewer);
         document.setReviewedAt(LocalDateTime.now());
         document.setRejectionReason(null);
+        document.touch();
 
         ApplicationDocument updatedDocument =
                 documentRepository.save(document);
@@ -224,6 +228,7 @@ public class ApplicationDocumentServiceImpl
         document.setReviewedByUser(reviewer);
         document.setReviewedAt(LocalDateTime.now());
         document.setRejectionReason(rejectionReason);
+        document.touch();
 
         ApplicationDocument updatedDocument =
                 documentRepository.save(document);

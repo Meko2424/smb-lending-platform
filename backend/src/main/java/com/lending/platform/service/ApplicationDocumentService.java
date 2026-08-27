@@ -1,6 +1,7 @@
 package com.lending.platform.service;
 
 import com.lending.platform.dto.request.ApplicationDocumentRequest;
+import com.lending.platform.dto.request.DocumentReceivedRequest;
 import com.lending.platform.dto.response.ApplicationDocumentResponse;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public interface ApplicationDocumentService {
     ApplicationDocumentResponse markReceived(
             Long applicationId,
             Long documentId,
-            ApplicationDocumentRequest request
+            DocumentReceivedRequest request
     );
 
     ApplicationDocumentResponse beginReview(

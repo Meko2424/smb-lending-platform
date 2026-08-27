@@ -1,5 +1,6 @@
 package com.lending.platform.controller;
 
+import com.lending.platform.AbstractIntegrationTest;
 import tools.jackson.databind.ObjectMapper;
 import com.lending.platform.dto.request.LoginRequest;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AuthControllerTest {
+class AuthControllerTest extends AbstractIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

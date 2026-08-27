@@ -1,5 +1,6 @@
 package com.lending.platform.controller;
 
+import com.lending.platform.AbstractIntegrationTest;
 import com.lending.platform.dto.request.ApplicationStatusTransitionRequest;
 import com.lending.platform.dto.request.BusinessRequest;
 import com.lending.platform.entity.ApplicationStatus;
@@ -32,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ApplicationWorkflowControllerTest {
+class ApplicationWorkflowControllerTest extends AbstractIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -1,5 +1,6 @@
 package com.lending.platform.controller;
 
+import com.lending.platform.AbstractIntegrationTest;
 import com.lending.platform.dto.request.BusinessRequest;
 import com.lending.platform.dto.request.LoanApplicationRequest;
 import com.lending.platform.entity.*;
@@ -24,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class LoanApplicationControllerTest {
+class LoanApplicationControllerTest extends AbstractIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

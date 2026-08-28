@@ -1,0 +1,13 @@
+package com.lending.platform.entity;
+
+public enum EligibilityCriterionType {
+    BUSINESS_OPERATING_HISTORY,
+    BUSINESS_LOCATION,
+    BUSINESS_TYPE,
+    LOAN_AMOUNT,
+    USE_OF_PROCEEDS,
+    DOCUMENT_COMPLETENESS,
+    REVENUE_REQUIREMENT,
+    OWNERSHIP_INFORMATION,
+    OTHER
+}
